@@ -38,3 +38,11 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     chrome.tabs.sendMessage(tab.id, { action: 'pasteWithoutPrivacify' });
   }
 });
+
+chrome.runtime.onInstalled.addListener(function() {
+  const  isForcePasteEnabled = true;
+    chrome.storage.local.set({ isForcePasteEnabled }, function() {
+      console.log("isForcePasteEnabled set to true");
+    });
+  
+});
