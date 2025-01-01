@@ -13,18 +13,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  
+
   // Load stored settings (patterns and domains) from chrome.storage
   function loadSettings() {
-    chrome.storage.local.get(['patterns', 'enabledDomains', 'showToast', 'toastPosition'], (data) => {
+    chrome.storage.local.get(['patterns', 'enabledDomains', 'showToast', 'toastPosition','isForcePasteEnabled'], (data) => {
       const patterns = data.patterns || [];
       const enabledDomains = data.enabledDomains || [];
       const showToast = data.showToast !== undefined ? data.showToast : true;
+      const isForcePasteEnabled = data.isForcePasteEnabled !== undefined ? data.isForcePasteEnabled : true;
       const toastPosition = data.toastPosition || 'bottom-right';
 
       // Apply settings to UI elements
       document.getElementById('showToast').checked = showToast;
       document.querySelector(`input[name="toastPosition"][value="${toastPosition}"]`).checked = true;
-
+      document.getElementById('forcePaste').checked = isForcePasteEnabled;
 
       // Render patterns in table
       const patternList = document.getElementById('patternList');
@@ -72,6 +75,14 @@ document.addEventListener("DOMContentLoaded", () => {
       chrome.storage.local.set({ toastPosition });
     });
   });
+
+
+  document.getElementById('forcePaste').addEventListener('change', (e) => {
+    console.log('value changed : ', e.target.checked);
+    const isForcePasteEnabled = e.target.checked;
+    chrome.storage.local.set({'isForcePasteEnabled': isForcePasteEnabled });
+  });
+
 
   // Add a new pattern
   document.getElementById('addPatternButton').addEventListener('click', () => {
