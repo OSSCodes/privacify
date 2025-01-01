@@ -2,6 +2,8 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'pasteWithPrivacify') {
     processPaste();
+  } else if(request.action === 'pasteWithoutPrivacify'){
+    processSimplePaste();
   }
 });
 
@@ -16,15 +18,6 @@ async function isDomainWhitelisted() {
   });
 }
 
-// Listen for the paste event (when user manually pastes content)
-document.addEventListener('paste', async (event) => {
-  if (await isDomainWhitelisted()) {
-    const clipboardText = event.clipboardData.getData('text');
-    handlePasteEvent('event', clipboardText);
-    // Prevent default paste behavior
-    event.preventDefault();
-  }
-});
 
 // Function to process the paste action
 async function processPaste() {
@@ -32,6 +25,16 @@ async function processPaste() {
   try {
     const clipboardText = await navigator.clipboard.readText();
     handlePasteEvent('action', clipboardText);
+  } catch (err) {
+    console.error('Failed to read clipboard content:', err);
+  }
+}
+
+async function processSimplePaste() {
+  // Check for clipboard content programmatically (for context menu)
+  try {
+    const clipboardText = await navigator.clipboard.readText();
+    handleSimplePasteEvent('action', clipboardText);
   } catch (err) {
     console.error('Failed to read clipboard content:', err);
   }
@@ -70,6 +73,18 @@ function handlePasteEvent(type, clipboardText) {
     // Show toast message if enabled
     if (showToast) {
       showToastMessage(toastPosition, 'Sensitive data has been masked and pasted successfully!');
+    }
+  })
+}
+
+function handleSimplePasteEvent(type, clipboardText) {
+  chrome.storage.local.get(['enabledDomains', 'patterns', 'showToast', 'toastPosition'], function (data) {
+    let content = clipboardText;
+    const activeElement = document.activeElement;
+    if (activeElement.tagName === 'TEXTAREA') {
+      insertTextAtCursor(activeElement, content);
+    } else if (activeElement.isContentEditable) {
+      insertTextAtCursorContentEditable(activeElement, content);
     }
   })
 }
