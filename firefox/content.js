@@ -7,6 +7,18 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
+
+
+document.addEventListener('paste', pasteEventListenerFunction);
+
+
+
+async function pasteEventListenerFunction(event) {
+    processForcePaste();
+    event.preventDefault();
+}
+
+
 // Function to check if the domain is whitelisted
 async function isDomainWhitelisted() {
   const domain = window.location.hostname;
@@ -16,6 +28,21 @@ async function isDomainWhitelisted() {
       resolve(enabledDomains.includes(domain));
     });
   });
+}
+
+// Function to process the force paste action
+async function processForcePaste() {
+  try {
+    chrome.storage.local.get('isForcePasteEnabled', result => {
+      if(result.isForcePasteEnabled){
+        processPaste();
+      }else{
+        processSimplePaste();
+      }
+    });
+  } catch (err) {
+    console.error('Failed to read clipboard content:', err);
+  }
 }
 
 
@@ -42,7 +69,7 @@ async function processSimplePaste() {
 
 // Function to process the paste action
 function handlePasteEvent(type, clipboardText) {
-  chrome.storage.local.get(['enabledDomains', 'patterns', 'showToast', 'toastPosition'], function (data) {
+  chrome.storage.local.get(['enabledDomains', 'patterns', 'showToast', 'toastPosition','isForcePasteEnabled'], function (data) {
     const enabledDomains = data.enabledDomains || [];
     const patterns = data.patterns || [];
     const showToast = data.showToast !== undefined ? data.showToast : true;
