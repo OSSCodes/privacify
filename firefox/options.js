@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById('forcePaste').addEventListener('change', (e) => {
     console.log('value changed : ', e.target.checked);
     const isForcePasteEnabled = e.target.checked;
-    chrome.storage.local.set({'isForcePasteEnabled': isForcePasteEnabled });
+    chrome.storage.local.set({ isForcePasteEnabled });
   });
 
 
