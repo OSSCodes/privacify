@@ -62,11 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Save the showToast and toastPosition settings
-  document.getElementById('showToast').addEventListener('change', (e) => {
-    const showToast = e.target.checked;
-    chrome.storage.local.set({ showToast });
-  });
+
 
   const radioButtons = document.querySelectorAll('input[name="toastPosition"]');
   radioButtons.forEach(radio => {
@@ -77,11 +73,28 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
+
+
   document.getElementById('forcePaste').addEventListener('change', (e) => {
     console.log('value changed : ', e.target.checked);
     const isForcePasteEnabled = e.target.checked;
     chrome.storage.local.set({ isForcePasteEnabled });
+
+    const showToastCheckbox = document.getElementById('showToast');
+    if (isForcePasteEnabled) {
+        showToastCheckbox.checked = true;
+        showToastCheckbox.disabled = true; // Disable showToast when forcePaste is checked
+        chrome.storage.local.set({ showToast: true });
+    } else {
+        showToastCheckbox.disabled = false; // Enable showToast when forcePaste is unchecked
+    }
   });
+
+  document.getElementById('showToast').addEventListener('change', (e) => {
+      const showToast = e.target.checked;
+      chrome.storage.local.set({ showToast });
+  });
+
 
 
   // Add a new pattern
