@@ -33,8 +33,6 @@ async function pasteEventListenerFunction(event) {
 
       if(count>0){
         showToastMessage(toastPosition, count+' SENSITIVE DATA PRESENT. PROCEED WITH CAUTION! USE PASTE WITH PRIVACIFY TO AVOID ACCIDENTAL DATA EXPOSURE!');
-      }else{
-      console.log('no sensitive content');
       }
     }
   });
