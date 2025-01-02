@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "Paste with Privacify",
+  "description": "Paste with Privacify to mask sensitive information",
+  "version": "1.0",
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "storage",
+    "clipboardWrite",
+    "clipboardRead"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "commands": {
+    "trigger-pasteWithPrivacify": {
+      "suggested_key": {
+        "default": "Alt+Shift+P",
+        "mac": "Option+Shift+P"
+      },
+      "description": "Paste with Privacy"
+    }
+  },
+  "action": {
+    "default_title": "Paste with Privacify",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ]
+}
