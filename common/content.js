@@ -18,22 +18,26 @@ async function pasteEventListenerFunction(event) {
     const pasteWarning = data.pasteWarning !== undefined ? data.pasteWarning : true;
     const patterns = data.patterns || [];
     const content = await navigator.clipboard.readText();
-    if(pasteWarning && await isDomainWhitelisted()){
-      let count = 0;
+    if(pasteWarning && await isDomainWhitelisted()) {
+        let hasMatches = false; // Flag to indicate whether any match is found
 
-        patterns.forEach(pattern => {
+        for (const pattern of patterns) {
           try {
             const regex = new RegExp(pattern.regex, 'g');
             const matches = content.match(regex);
-            count += matches ? matches.length : 0; // Only add if matches is valid
+            if (matches && matches.length>0) {
+              hasMatches = true; // Set flag to true if matches are found
+              break; // Exit the loop as we found a match
+            }
           } catch (error) {
             console.error(`Invalid regex: ${pattern.regex} - Error: ${error.message}`);
           }
-        });
-
-      if(count>0){
-        showToastMessage(toastPosition, count+' SENSITIVE DATA PRESENT. PROCEED WITH CAUTION! USE PASTE WITH PRIVACIFY TO AVOID ACCIDENTAL DATA EXPOSURE!');
-      }
+        }
+  
+        if(hasMatches){
+          console.log( 'SENSITIVE DATA PRESENT. PROCEED WITH CAUTION! USE PASTE WITH PRIVACIFY TO AVOID ACCIDENTAL DATA EXPOSURE!');
+        }
+      
     }
   });
 }
