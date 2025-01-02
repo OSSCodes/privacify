@@ -19,7 +19,7 @@
     "trigger-pasteWithPrivacify": {
       "suggested_key": {
         "default": "Alt+Shift+P",
-        "mac": "Option+Shift+P"
+        "mac": "Ctrl+Shift+P"
       },
       "description": "Paste with Privacy"
     }

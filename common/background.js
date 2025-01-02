@@ -2,6 +2,18 @@ chrome.action.onClicked.addListener(() => {
   chrome.tabs.create({ url: chrome.runtime.getURL("options.html") });
 });
 
+// Default patterns to preload
+const defaults = {
+  patterns: [
+    { "regex": "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}", "maskValue": "[email]" },
+    { "regex": "[A-Za-z0-9-_]+\\.[A-Za-z0-9-_]+\\.[A-Za-z0-9-_]+", "maskValue": "[token]" },
+    { "regex": "[A-Za-z]:\\\\([A-Za-z0-9 ()]+\\\\)*[A-Za-z0-9]+", "maskValue": "[directory]" },
+    { "regex": "\/(?:[A-Za-z0-9_-]+\/)*[A-Za-z0-9_-]+", "maskValue": "[directory]" }
+  ],
+  enabledDomains: [
+    "chatgpt.com", "gemini.google.com"
+  ]
+};
 
 chrome.runtime.onInstalled.addListener(() => {
   // Detect platform and set the appropriate shortcut
@@ -16,6 +28,13 @@ chrome.runtime.onInstalled.addListener(() => {
     title: "Paste with Privacify "+shortcut,
     contexts: ["editable"],
   });
+
+  
+  chrome.storage.local.set({ patterns: defaults.patterns, enabledDomains: defaults.enabledDomains }, () => {
+    console.log("Default loaded.");
+  });
+  
+
 });
 
 // Context menu click handler
