@@ -8,17 +8,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 
-
-document.addEventListener('paste', pasteEventListenerFunction);
+document.addEventListener('paste', pasteEventListenerFunction, {capture:true});
 
 
 
 async function pasteEventListenerFunction(event) {
-
+    event.stopImmediatePropagation();
+    event.preventDefault();
     processForcePaste();
     event.preventDefault();
 }
-
 
 // Function to check if the domain is whitelisted
 async function isDomainWhitelisted() {
