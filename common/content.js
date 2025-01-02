@@ -35,7 +35,7 @@ async function pasteEventListenerFunction(event) {
         }
   
         if(hasMatches){
-          console.log( 'SENSITIVE DATA PRESENT. PROCEED WITH CAUTION! USE PASTE WITH PRIVACIFY TO AVOID ACCIDENTAL DATA EXPOSURE!');
+          showToastMessage(toastPosition, 'SENSITIVE DATA PRESENT. PROCEED WITH CAUTION! USE PASTE WITH PRIVACIFY TO AVOID ACCIDENTAL DATA EXPOSURE!');
         }
       
     }
