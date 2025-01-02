@@ -14,6 +14,7 @@ document.addEventListener('paste', pasteEventListenerFunction);
 
 
 async function pasteEventListenerFunction(event) {
+
     processForcePaste();
     event.preventDefault();
 }
@@ -33,10 +34,10 @@ async function isDomainWhitelisted() {
 // Function to process the force paste action
 async function processForcePaste() {
   try {
-    chrome.storage.local.get('isForcePasteEnabled', result => {
-      if(result.isForcePasteEnabled){
+    chrome.storage.local.get('isForcePasteEnabled', async (result) => {
+      if(result.isForcePasteEnabled && await isDomainWhitelisted()){
         processPaste();
-      }else{
+      } else {
         processSimplePaste();
       }
     });
@@ -75,6 +76,7 @@ function handlePasteEvent(type, clipboardText) {
     const showToast = data.showToast !== undefined ? data.showToast : true;
     const toastPosition = data.toastPosition || 'bottom-right';
     const currentDomain = window.location.hostname;
+    const isForcePasteEnabled = data.isForcePasteEnabled !== undefined ? data.isForcePasteEnabled : true;
 
     // Only proceed if domain is whitelisted
     if (!enabledDomains.includes(currentDomain) && type === 'action') {
@@ -98,7 +100,7 @@ function handlePasteEvent(type, clipboardText) {
     }
 
     // Show toast message if enabled
-    if (showToast) {
+    if (showToast || isForcePasteEnabled) {
       showToastMessage(toastPosition, 'Sensitive data has been masked and pasted successfully!');
     }
   })
