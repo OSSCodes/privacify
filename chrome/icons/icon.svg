@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="190" height="193.05" version="1.1" viewBox="0 0 190 193.05" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(10.083 9.2798)" fill="none">
+  <rect x="-43.084" y="-40.755" width="256" height="256"/>
+  <g transform="translate(1 1)" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
+   <polyline transform="matrix(.7952 0 0 .7952 2.1504 -37.088)" points="168 168 216 168 216 40 88 40 88 88" fill="none" stroke="#b3b3b3" stroke-width="12.575"/>
+   <polyline transform="matrix(.7952 0 0 .7952 -38.019 1.0819)" points="168 168 216 168 216 40 88 40 88 88" fill="none" stroke="#b3b3b3" stroke-width="12.575"/>
+   <g transform="matrix(.57356 0 0 .57356 -178.1 73.343)" fill="#f00" stroke-width="17.435">
+    <path d="m299.92 65.121v-58.7a8 8 0 0 1 8-8h160a8 8 0 0 1 8 8v58.7c0 84-71.3 111.8-85.5 116.5a7.2 7.2 0 0 1-5 0c-14.2-4.7-85.5-32.5-85.5-116.5z" stroke="#f00"/>
+    <polyline transform="translate(259.92 -49.579)" points="172 104 113.3 160 84 132" stroke="#fff"/>
+   </g>
+  </g>
+ </g>
+</svg>

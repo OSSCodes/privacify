@@ -2,14 +2,14 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="216.86194"
-   height="227.64787"
-   viewBox="0 0 57.378054 60.231835"
+   width="189.99773"
+   height="193.04988"
+   viewBox="0 0 189.99773 193.04988"
    version="1.1"
    id="svg5"
-   inkscape:export-filename="/home/thirumalairaj/Documents/repositories/oss.codes/privacify/firefox/icons/icon16.png"
-   inkscape:export-xdpi="7.8800001"
-   inkscape:export-ydpi="7.8800001"
+   inkscape:export-filename="/home/thirumalairaj/Documents/repositories/oss.codes/privacify/firefox/icons/icon96.png"
+   inkscape:export-xdpi="36"
+   inkscape:export-ydpi="36"
    inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
    sodipodi:docname="icon.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -24,11 +24,11 @@
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
-     inkscape:document-units="mm"
+     inkscape:document-units="px"
      showgrid="false"
      inkscape:zoom="1"
-     inkscape:cx="-16"
-     inkscape:cy="153"
+     inkscape:cx="95"
+     inkscape:cy="97"
      inkscape:window-width="1600"
      inkscape:window-height="931"
      inkscape:window-x="0"
@@ -36,35 +36,61 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1"
      units="px"
-     fit-margin-top="10"
-     fit-margin-left="10"
-     fit-margin-right="10"
-     fit-margin-bottom="10" />
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <defs
      id="defs2" />
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-69.492047,-81.767176)">
+     transform="translate(10.083257,9.279844)">
+    <rect
+       fill="none"
+       height="256"
+       width="256"
+       id="rect2"
+       x="-43.084393"
+       y="-40.754906" />
     <g
-       id="g1863"
-       inkscape:export-filename="/home/thirumalairaj/Documents/repositories/oss.codes/privacify/firefox/icons/icon16.png"
-       inkscape:export-xdpi="7.8000002"
-       inkscape:export-ydpi="7.8000002"
-       style="stroke-width:1.32292;stroke-miterlimit:4;stroke-dasharray:none">
+       id="g3629"
+       transform="translate(1.0000021,1.0000003)"
+       style="stroke:#000000;fill:none">
+      <polyline
+         fill="none"
+         points="168 168 216 168 216 40 88 40 88 88"
+         stroke="#000000"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-width="16"
+         id="polyline4"
+         transform="matrix(0.79520415,0,0,0.79520415,2.150367,-37.088005)"
+         style="stroke-width:12.5754;stroke-miterlimit:4;stroke-dasharray:none;stroke:#b3b3b3;fill:none" />
+      <polyline
+         fill="none"
+         points="168 168 216 168 216 40 88 40 88 88"
+         stroke="#000000"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-width="16"
+         id="polyline4-3"
+         transform="matrix(0.79520415,0,0,0.79520415,-38.019353,1.0819333)"
+         style="stroke-width:12.5754;stroke-miterlimit:4;stroke-dasharray:none;stroke:#b3b3b3;fill:none" />
       <g
-         id="g1851"
-         style="stroke-width:1.32292;stroke-miterlimit:4;stroke-dasharray:none">
+         id="g2966"
+         transform="matrix(0.57355795,0,0,0.57355795,-178.10225,73.34304)"
+         style="fill:none;stroke:#000000">
         <path
-           d="m 72.79934,115.95474 v -11.41245 a 1.5553591,1.5553591 0 0 1 1.555359,-1.55536 h 31.107181 a 1.5553591,1.5553591 0 0 1 1.55536,1.55536 v 11.41245 c 0,16.33127 -13.862137,21.73614 -16.622897,22.64992 a 1.3998233,1.3998233 0 0 1 -0.972102,0 C 86.661479,137.69088 72.79934,132.28601 72.79934,115.95474 Z"
+           d="m 299.91561,65.121354 v -58.7 a 8,8 0 0 1 8,-8 h 160 a 8,8 0 0 1 8,8 v 58.7 c 0,83.999996 -71.3,111.799996 -85.5,116.499996 a 7.2,7.2 0 0 1 -5,0 c -14.2,-4.7 -85.5,-32.5 -85.5,-116.499996 z"
            fill="none"
            stroke="#000000"
            stroke-linecap="round"
            stroke-linejoin="round"
-           stroke-width="4.23333"
-           id="path11"
-           style="stroke:#000000;stroke-width:1.32292;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+           stroke-width="16"
+           id="path4"
+           style="fill:#ff0000;stroke-width:17.435;stroke-miterlimit:4;stroke-dasharray:none;stroke:#ff0000" />
         <polyline
            fill="none"
            points="172 104 113.3 160 84 132"
@@ -72,29 +98,9 @@
            stroke-linecap="round"
            stroke-linejoin="round"
            stroke-width="16"
-           id="polyline13"
-           transform="matrix(0.19441989,0,0,0.19441989,66.167516,93.320113)"
-           style="stroke:#000000;stroke-width:6.80443;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      </g>
-      <g
-         id="g1855"
-         style="stroke-width:1.32292;stroke-miterlimit:4;stroke-dasharray:none">
-        <path
-           id="polyline28"
-           style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
-           transform="matrix(0.26458333,0,0,0.26458333,66.412811,74.491134)"
-           d="M 216,168 V 40 H 88"
-           sodipodi:nodetypes="ccc" />
-        <polyline
-           fill="none"
-           points="168 168 216 168 216 40 88 40 88 88"
-           stroke="#000000"
-           stroke-linecap="round"
-           stroke-linejoin="round"
-           stroke-width="16"
-           id="polyline28-3"
-           transform="matrix(0.26458333,0,0,0.26458333,62.179484,79.253629)"
-           style="stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+           id="polyline6"
+           transform="translate(259.91561,-49.578646)"
+           style="fill:#ff0000;stroke-width:17.435;stroke-miterlimit:4;stroke-dasharray:none;stroke:#ffffff" />
       </g>
     </g>
   </g>

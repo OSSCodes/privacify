@@ -11,9 +11,7 @@
     "clipboardRead"
   ],
   "background": {
-    "scripts": [
-      "background.js"
-    ]
+    "service_worker": "background.js"
   },
   "commands": {
     "trigger-pasteWithPrivacify": {
