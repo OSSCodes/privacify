@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Paste with Privacify",
   "description": "Paste with Privacify to mask sensitive information",
-  "version": "1.0",
+  "version": "1.1",
   "permissions": [
     "contextMenus",
     "activeTab",
@@ -27,11 +27,13 @@
   "action": {
     "default_title": "Paste with Privacify",
     "default_icon": "icons/icon.svg",
-    "theme_icons": [{
-      "light": "icons/icon.svg",
-      "dark": "icons/icon.svg",
-      "size": 32
-    }]
+    "theme_icons": [
+      {
+        "light": "icons/icon.svg",
+        "dark": "icons/icon.svg",
+        "size": 32
+      }
+    ]
   },
   "icons": {
     "32": "icons/icon.svg"
@@ -53,5 +55,11 @@
   "host_permissions": [
     "http://*/*",
     "https://*/*"
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "developer@oss.codes",
+      "strict_min_version": "58.0"
+    }
+  }
 }

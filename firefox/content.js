@@ -5,14 +5,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   } 
 });
 
-
-
 document.addEventListener('paste', pasteEventListenerFunction);
 
-
-
 async function pasteEventListenerFunction(event) {
-
   chrome.storage.local.get(['pasteWarning', 'toastPosition', 'patterns'],async function(data){
     const toastPosition = data.toastPosition || 'bottom-right';
     const pasteWarning = data.pasteWarning !== undefined ? data.pasteWarning : true;
@@ -35,7 +30,7 @@ async function pasteEventListenerFunction(event) {
         }
   
         if(hasMatches){
-          showToastMessage(toastPosition, 'SENSITIVE DATA PRESENT. PROCEED WITH CAUTION! USE PASTE WITH PRIVACIFY TO AVOID ACCIDENTAL DATA EXPOSURE!');
+          showToastMessage(toastPosition, 'SENSITIVE DATA PRESENT. PROCEED WITH CAUTION! USE PASTE WITH PRIVACIFY TO AVOID ACCIDENTAL DATA EXPOSURE!', 'severe');
         }
       
     }
@@ -143,7 +138,23 @@ function insertTextAtCursorContentEditable(contentEditableElement, text) {
 }
 
 // Function to show toast message
-function showToastMessage(position, message) {
+function showToastMessage(position, message, alertLevel = 'info') {
+
+  const alertLevels = {
+    'info': {
+      'backgroundColor': 'rgba(0, 0, 0, 0.7)',
+      'color': '#ffffff'
+    },
+    'warn': {
+      'backgroundColor': 'rgba(255, 165, 0, 0.7)',
+      'color': '#000000'
+    },
+    'severe': {
+      'backgroundColor': 'rgba(255, 0, 0, 0.7)',
+      'color': '#ffffff'
+    }
+  }
+
   const toast = document.createElement('div');
   toast.classList.add('privacify-toast');
   toast.innerText = message;
@@ -176,8 +187,8 @@ function showToastMessage(position, message) {
   // Apply some basic styles for the toast
   toast.style.position = 'fixed';
   toast.style.padding = '10px';
-  toast.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-  toast.style.color = '#fff';
+  toast.style.backgroundColor = alertLevels[alertLevel].backgroundColor;
+  toast.style.color = alertLevels[alertLevel].color;
   toast.style.borderRadius = '5px';
   toast.style.zIndex = '9999';
 

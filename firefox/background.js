@@ -1,7 +1,3 @@
-chrome.action.onClicked.addListener(() => {
-  chrome.tabs.create({ url: chrome.runtime.getURL("options.html") });
-});
-
 // Default patterns to preload
 const defaults = {
   patterns: [
@@ -15,26 +11,31 @@ const defaults = {
   ]
 };
 
+// Action when extension icon is clicked
+chrome.action.onClicked.addListener(() => {
+  chrome.tabs.create({ url: chrome.runtime.getURL("options.html") });
+});
+
+
 chrome.runtime.onInstalled.addListener(() => {
   // Detect platform and set the appropriate shortcut
   const platform = navigator.userAgent.toLowerCase();
-  let shortcut = '[Alt+Shift+P]';  // Default for Windows/Linux
-
-  if (platform.includes('mac')) {
-    shortcut = '[Cmd+Shift+P]';  // macOS shortcut
-  }
+  const shortcut = platform.includes('mac') ? '[Cmd+Shift+P]' : '[Alt+Shift+P]';
+  // Create context menu item
   chrome.contextMenus.create({
     id: "pasteWithPrivacify",
-    title: "Paste with Privacify "+shortcut,
+    title: "Paste with Privacify " + shortcut,
     contexts: ["editable"],
   });
-
-  
-  chrome.storage.local.set({ patterns: defaults.patterns, enabledDomains: defaults.enabledDomains }, () => {
+  // Set default values in storage
+  chrome.storage.local.set({
+    patterns: defaults.patterns,
+    enabledDomains: defaults.enabledDomains,
+    pasteWarning: true,
+    showToast: true
+  }, () => {
     console.log("Default loaded.");
   });
-  
-
 });
 
 // Context menu click handler
@@ -44,19 +45,8 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
 });
 
-chrome.runtime.onInstalled.addListener(function() {
-  const  pasteWarning = true;
-    chrome.storage.local.set({ pasteWarning }, function() {
-    });
-});
 
-chrome.runtime.onInstalled.addListener(function() {
-  const  showToast = true;
-    chrome.storage.local.set({ showToast }, function() {
-    });
-});
-
-// Shortcut key handler (for Alt+Shift+P or Command+Shift+P)
+// Shortcut key handler (for Alt+Shift+P or Ctrl+Shift+P)
 chrome.commands.onCommand.addListener((command) => {
   if (command === "trigger-pasteWithPrivacify") {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
